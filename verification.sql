@@ -23,3 +23,15 @@ LEFT JOIN client cl
     ON co.id_client = cl.id_client
 ORDER BY co.id_commande;
 
+-- ETAPE 5
+SELECT
+    s.nom_serveur,
+    COUNT(co.id_commande) AS nombre_commandes,
+    COALESCE(SUM(vc.total), 0) AS chiffre_affaires
+FROM serveur s
+LEFT JOIN commande co
+    ON s.id_serveur = co.id_serveur
+LEFT JOIN view_commande vc
+    ON co.id_commande = vc.id_commande
+GROUP BY s.id_serveur, s.nom_serveur
+ORDER BY s.id_serveur;
