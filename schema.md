@@ -11,3 +11,7 @@
 **SERVEUR**(**id_serveur**, nom_serveur)
 
 **TABLE_SALLE**(**id_table**, numero_table)
+
+**TYPE_PAIEMENT**(**id_type**, nom)
+
+**PAIEMENT**(**id_paiement**,#id_commande,#type_paiement, montant)

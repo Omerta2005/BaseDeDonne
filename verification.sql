@@ -35,3 +35,16 @@ LEFT JOIN view_commande vc
     ON co.id_commande = vc.id_commande
 GROUP BY s.id_serveur, s.nom_serveur
 ORDER BY s.id_serveur;
+
+-- Etape 6
+
+SELECT v_com.id_commande,
+         v_com.total AS montant_du,
+         SUM(p.montant) AS montant_payee,
+         v_com.total - SUM(p.montant) AS Reste_a_payer
+FROM view_commande v_com
+LEFT JOIN paiement p
+    ON v_com.id_commande = p.id_commande
+GROUP BY v_com.id_commande, v_com.total
+ORDER BY v_com.id_commande;
+    
